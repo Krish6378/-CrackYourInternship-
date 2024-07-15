@@ -1,0 +1,23 @@
+static const bool Init = [](){
+    std::ios_base::sync_with_stdio(false);
+    std::cout.tie(nullptr);
+    std::cin.tie(nullptr);
+    return true;
+}();
+class Solution{
+    public:
+    long long findMinDiff(vector<long long> a, long long n, long long m){
+    //code
+    sort(a.begin(),a.end());
+    long long ans=INT_MAX;
+    int index_first=0,index_last=m-1;
+    
+    while(index_last<n){
+        ans=min(ans,a[index_last]-a[index_first]);
+        index_last++;
+        index_first++;
+    }
+    
+    return ans;
+    }   
+};
