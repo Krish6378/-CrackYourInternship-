@@ -1,0 +1,40 @@
+static const bool Init=[](){
+    ios_base::sync_with_stdio(false);
+    cout.tie(0);
+    cin.tie(0);
+    return true;
+}();
+
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> k;
+        for(int i=0;i<s.length();i++){
+            char ch=s[i];
+            if(ch=='('|| ch=='{' || ch=='[')
+             k.push(ch);
+            else{
+                if(!k.empty()){
+                  char top = k.top();
+                  if((top=='[' && ch==']')
+                  ||(top=='{' && ch=='}')
+                  ||(top=='('&& ch==')')){
+                    k.pop();
+                  }
+                  else
+                  return false;
+                }
+                else
+                return false;
+            }
+
+        }
+
+        if(k.empty()){
+            return true;
+        }
+
+        else
+        return false;
+    }
+};
