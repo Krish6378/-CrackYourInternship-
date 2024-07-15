@@ -1,0 +1,21 @@
+ static const bool Init = [](){
+    std::ios_base::sync_with_stdio(false);
+    std::cout.tie(nullptr);
+    std::cin.tie(nullptr);
+    return true;
+}();
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n=nums.size();
+        int i=0,j=0;
+        while(j<n){
+            if(nums[j]!=0){
+                swap(nums[i],nums[j]);
+                i++;
+            }
+            j++;
+        }
+    }
+};
