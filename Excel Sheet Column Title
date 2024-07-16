@@ -1,0 +1,26 @@
+static const bool Init = [](){
+    std::ios_base::sync_with_stdio(false);
+    std::cout.tie(nullptr);
+    std::cin.tie(nullptr);
+    return true;
+}();
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+        string ans="";
+        unordered_map<int,char>mp;
+        char ch='A';
+        for(char i=1;i<=26;i++){
+            mp[i]=ch++;
+        }
+        while(columnNumber!=0){
+            int y=columnNumber%26  ;
+            if(y==0) y=26;
+            ans+=mp[y];
+            columnNumber=columnNumber-y;
+            columnNumber/=26;
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
